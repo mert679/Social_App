@@ -1,0 +1,14 @@
+{%extends "blog/layout.html"%}
+{% load static %}
+{% block body %}
+<div class="new-post-form">
+    <form  method="POST">
+        {% csrf_token %}
+        <textarea maxlength="280" rows="2" name="body"  value="">{{content.post}}</textarea>
+        <div class="submit-container">
+            <input type="submit" value="Post"></input>
+        </div>
+    </form>
+</div>
+
+{%endblock%}

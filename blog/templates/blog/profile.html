@@ -1,0 +1,27 @@
+{%extends "blog/layout.html"%}
+
+{%block body%}
+<h1>{{user.username}} 's Profile</h1>
+
+<!-- current user(loged in) : {{user.id}}
+post auther : {{pst.user.id}} if they are equal change post -->
+<div>total Post {{post_count}} <span>total follower {{currently_followed}}</span> <span>total following {{following_count}}</span></div> 
+
+{%for pst in posts%}
+
+{%if user.id == pst.user.id%}
+<div class="post-outer-container">
+    <div class="post-container">
+        {{pst.post}}
+        {{pst.user}}
+        {{pst.timestamp}}
+        
+        <a href="{%url 'edit-post' pst.id%}" style="margin-left:15px ;"> Edit</a>
+        <a href="{%url 'delete' pst.id%}" style="margin-left:15px ;"> Delete</a>
+       
+    </div>
+</div>
+{%endif%}
+{%endfor%}
+
+{%endblock%}
